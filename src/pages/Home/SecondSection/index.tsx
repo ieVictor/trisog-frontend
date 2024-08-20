@@ -7,7 +7,7 @@ import StatsItem from "./athoms/StatsItem";
 
 export default function SecondSection() {
   return (
-    <section className="flex flex-col w-full bg-white max-h-[987px] gap-12 px-32 pt-36 overflow-hidden">
+    <section className="flex flex-col w-full bg-white  gap-12 px-32 py-32 pt-36 overflow-hidden">
       <div className="flex flex-col self-center">
         <CenteredSubtitle content="Tours"/>
         <h2 className="text-blue-950 font-display text-4xl font-bold">Most Popular Tours</h2>
