@@ -15,7 +15,7 @@ interface TextInputProps {
 
 export default function TextInput(props: TextInputProps) {
   return (
-    <div className='flex flex-col gap-2 text-sm'>
+    <div className='flex flex-col gap-1 text-sm'>
       {props.label && <label htmlFor={props.id} className="text-blue-950 font-script self-start font-medium text-sm">
         {props.label}
       </label>}
