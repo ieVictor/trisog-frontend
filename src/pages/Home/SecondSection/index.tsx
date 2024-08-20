@@ -1,19 +1,17 @@
-import CenteredSubtitle from "../../../components/CenteredSubtitle";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import TourCard from "../../../components/TourCard";
 import StatsItem from "./athoms/StatsItem";
+import CenteredTitle from "../../../components/CenteredTitle";
 
 export default function SecondSection() {
   return (
     <section className="flex flex-col w-full bg-white  gap-12 px-32 py-32 pt-36 overflow-hidden">
-      <div className="flex flex-col self-center">
-        <CenteredSubtitle content="Tours"/>
-        <h2 className="text-blue-950 font-display text-4xl font-bold">Most Popular Tours</h2>
-      </div>
+      <CenteredTitle title="Most Popular Tours" subtitle="Tours"/>
       <div className="w-full h-[520px] ">
         <Slider
+          infinite={false}
           dotsClass="slick-dots -bottom-16 text-rose-500"
           dots
           speed={500}

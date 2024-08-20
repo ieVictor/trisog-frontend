@@ -1,4 +1,5 @@
 import Navigation from "../../components/Navigation";
+import FifthSection from "./FifthSection";
 import FirstSection from "./FirstSection";
 import FourthSection from "./FourthSection";
 import SecondSection from "./SecondSection";
@@ -13,6 +14,7 @@ export default function Home() {
         <SecondSection/>
         <ThirdSection/>
         <FourthSection/>
+        <FifthSection/>
       </main>
     </>
   )
