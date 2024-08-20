@@ -4,6 +4,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./index.html"
   ],
-  theme: {},
+  theme: {
+    fontFamily: {
+      'sans': ['Inter'],
+      'display': ['"Work Sans"'],
+      'script': ['"Kaushan Script"'],
+    }
+  },
   plugins: [],
 };
