@@ -1,19 +1,22 @@
 type ButtonProps = {
   text: string;
   onClick: () => void;
-  disabled?: boolean
+  disabled?: boolean;
   type: 'submit' | 'button' | 'reset';
-}
+};
 
-const Button = ({ text, type, onClick, disabled}: ButtonProps) => {
+const Button = ({ text, type, onClick, disabled }: ButtonProps) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      disabled={disabled} 
-      className="w-full min-w-[105px] text-white bg-rose-600 font-sans text-center rounded h-11  transition hover:brightness-90"
+      disabled={disabled}
+      className={`
+        flex w-fit px-7 items-center text-white bg-rose-600 
+        font-sans text-center rounded-lg h-11 transition hover:brightness-90
+      `}
     >
-      {text}
+      <span className="flex-1">{text}</span>
     </button>
   );
 };
