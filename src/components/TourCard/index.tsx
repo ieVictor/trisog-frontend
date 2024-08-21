@@ -1,11 +1,15 @@
 import { Clock } from "@phosphor-icons/react";
 import Rating from "./athoms/Rating";
 import Placeholder from '../../assets/tourCardPlaceholder.png'
+import HeartButton from "./athoms/HeartButton";
 
 export default function TourCard() {
   return (
     <div className="flex flex-col gap-4 bg-gray-100 w-[270px] h-[410px]">
-      <img src={Placeholder} alt="Coast" />
+      <div className="relative">
+        <HeartButton/>
+        <img src={Placeholder} alt="Coast" />
+      </div>
       <div className="flex flex-col gap-3 px-4">
         <hgroup className="gap-2.5 w-full text-start">
           <sub className="text-gray-400 font-sans w-full text-xs">Budapest Hungary</sub>
@@ -14,7 +18,7 @@ export default function TourCard() {
         <data className="flex flex-col gap-2">
           <div className="flex flex-row justify-between">
             <div className="flex flex-row gap-2 items-center">
-              <Rating/>
+              <Rating rating={4.6}/>
               <span className="text-gray-400 font-sans text-xs">15 reviews</span>
             </div>
             <div className="flex text-gray-400 flex-row gap-1 items-center">
