@@ -69,7 +69,7 @@ export default function Footer() {
                 <Button text="Submit" type="button" onClick={() => {}}/>
               </div>
             </form>
-            <span className="text-gray-400 text-base">2023 Trisog All Rights Reserved</span>
+            <span className="text-gray-400 text-sm">© 2023 Trisog All Rights Reserved</span>
           </div>
         </div>
       </footer>
