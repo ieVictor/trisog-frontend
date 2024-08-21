@@ -20,7 +20,7 @@ export default function TextInput(props: TextInputProps) {
         {props.label}
       </label>}
 
-      <div className='flex flex-row items-center min-w-[236px] gap-1 p-3 rounded border border-gray-200 text-gray-400'>
+      <div className='flex flex-row items-center min-w-[236px] gap-1 p-3 rounded border bg-white border-gray-200 text-gray-400'>
         {props.icon && getIcon(props.icon)}
         <input  
           id={props.id}
