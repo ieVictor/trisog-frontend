@@ -1,11 +1,14 @@
-import Home from './pages/Home'
+import { NextUIProvider } from '@nextui-org/react'
+import TourPackage from './pages/TourPackage'
 import './styles/App.css'
 
 function App() {
 
   return (
     <>
-      <Home/>
+      <NextUIProvider>
+        <TourPackage/>
+      </NextUIProvider>
     </>
   )
 }
