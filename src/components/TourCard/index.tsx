@@ -3,12 +3,21 @@ import Rating from "./athoms/Rating";
 import Placeholder from '../../assets/tourCardPlaceholder.png'
 import HeartButton from "./athoms/HeartButton";
 
-export default function TourCard() {
+type TourCardProps = {
+  fill?: boolean
+}
+
+export default function TourCard(props: TourCardProps) {
   return (
-    <div className="flex flex-col gap-4 bg-gray-100 w-[270px] h-[410px]">
+    <div 
+      className={
+        "flex flex-col gap-4 bg-gray-100  h-fit pb-4" + 
+        (props.fill ? " w-full" : " w-[270px]")
+      }
+    >
       <div className="relative">
         <HeartButton/>
-        <img src={Placeholder} alt="Coast" />
+        <img src={Placeholder} alt="Coast" className="w-full"/>
       </div>
       <div className="flex flex-col gap-3 px-4">
         <hgroup className="gap-2.5 w-full text-start">

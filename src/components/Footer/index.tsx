@@ -30,10 +30,10 @@ export default function Footer() {
 
           <div className="w-px h-60 bg-white"/>
 
-          <div className="flex flex-row gap-16 items-center">
+          <div className="flex flex-row gap-16 items-center text-white">
             <div className="flex flex-col gap-4">
               <span className="font-script text-sm text-start">Company</span>
-              <ul className="flex flex-col gap-3 font-sans text-start text-base">
+              <ul className="flex flex-col gap-3 font-sans text-start text-base text-white">
                 <li>About Us</li>
                 <li>Contact Us</li>
                 <li>Travel Guides</li>
@@ -43,13 +43,13 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <span className="font-script text-sm text-start">Top Destination</span>
               <div className="flex flex-row gap-8">
-                <ul className="flex flex-col gap-3 font-sans text-start text-base">
+                <ul className="flex flex-col gap-3 font-sans text-start text-base text-white">
                   <li>Las Vegas</li>
                   <li>New York City</li>
                   <li>San Francisco</li>
                   <li>Hawaii</li>
                 </ul>
-                <ul className="flex flex-col gap-3 font-sans text-start text-base">
+                <ul className="flex flex-col gap-3 font-sans text-start text-base text-white">
                   <li>Tokyo</li>
                   <li>Sydney</li>
                   <li>Melbourne</li>
@@ -61,7 +61,7 @@ export default function Footer() {
 
           <div className="w-px h-60 bg-white"/>
 
-          <div className="flex flex-col gap-14">
+          <div className="flex flex-col gap-14 text-white">
             <form className="text-start flex flex-col gap-4">
               <span className="font-script text-sm">Sign up Newsletter</span>
               <div className="flex flex-col gap-2">

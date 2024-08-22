@@ -12,11 +12,11 @@ const Button = ({ text, type, onClick, disabled }: ButtonProps) => {
       onClick={onClick}
       disabled={disabled}
       className={`
-        flex w-fit px-7 items-center text-white bg-rose-600 
+        flex w-fit px-7 items-center text-white bg-rose-500 
         font-sans text-center rounded-lg h-11 transition hover:brightness-90
       `}
     >
-      <span className="flex-1">{text}</span>
+      <span className="flex-1 font-sans font-normal text-base">{text}</span>
     </button>
   );
 };
