@@ -10,7 +10,7 @@ interface TextInputProps {
   name?: string;
   placeholder?: string;
   label?: string;
-  labelStyle: string;
+  labelStyle?: string;
   icon?: DestinationFormIcons;
 }
 
