@@ -10,13 +10,14 @@ interface TextInputProps {
   name?: string;
   placeholder?: string;
   label?: string;
-  icon?: DestinationFormIcons
+  labelStyle: string;
+  icon?: DestinationFormIcons;
 }
 
 export default function TextInput(props: TextInputProps) {
   return (
-    <div className='flex flex-col gap-1 text-sm'>
-      {props.label && <label htmlFor={props.id} className="text-blue-950 font-script self-start font-medium text-sm">
+    <div className='flex flex-col gap-1 text-sm w-full'>
+      {props.label && <label htmlFor={props.id} className={props.labelStyle || "text-body text-blue-950"}>
         {props.label}
       </label>}
 
@@ -31,7 +32,7 @@ export default function TextInput(props: TextInputProps) {
           onChange={props.onChange}
           onFocus={props.onFocus}
           name={props.name}
-          className="bg-transparent outline-none"
+          className="bg-transparent outline-none focus:text-blue-950"
         />
       </div>
     </div>
