@@ -17,10 +17,10 @@ export default function SecondSection() {
           speed={500}
           slidesToShow={4}
         >
-          <TourCard/>
-          <TourCard/>
-          <TourCard/>
-          <TourCard/>
+          <TourCard url="tours/1"/>
+          <TourCard url="tours/1"/>
+          <TourCard url="tours/1"/>
+          <TourCard url="tours/1"/>
         </Slider>
       </div>
       <hr/>
