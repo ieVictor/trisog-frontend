@@ -3,6 +3,16 @@
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+html {
+  height: 100%;
+  background-color: white;
+}
+
+body {
+  height: 100%;
+  background-color: white;
+}
+
 :root {
   line-height: 1.5;
   font-weight: 400;

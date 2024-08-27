@@ -1,4 +1,3 @@
-import Navigation from '../../components/Navigation';
 import mockupImage from '../../assets/tourCardPlaceholder.png';
 import Title from './components/Title';
 import TourInformations from './components/TourInformations';
@@ -16,7 +15,6 @@ import { TourProps } from '../../types/TourType';
 export default function TourDetails(props: TourProps) {
   return (
     <>
-      <Navigation />
       <main className="w-full h-full bg-white py-16 px-32">
         <div className="w-full flex flex-row justify-between">
           <div className="w-full max-w-[774px] flex flex-col gap-7">

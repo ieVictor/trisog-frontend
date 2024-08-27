@@ -1,5 +1,4 @@
 import Footer from "../../components/Footer";
-import Navigation from "../../components/Navigation";
 import FifthSection from "./FifthSection";
 import FirstSection from "./FirstSection";
 import FourthSection from "./FourthSection";
@@ -10,7 +9,6 @@ import ThirdSection from "./ThirdSection";
 export default function Home() {
   return (
     <>
-      <Navigation/>
       <main className="w-full h-full">
         <FirstSection/>
         <SecondSection/>

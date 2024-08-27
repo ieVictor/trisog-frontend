@@ -1,6 +1,5 @@
 import DestinationForm from '../../components/DestinationForm';
 import Footer from '../../components/Footer';
-import Navigation from '../../components/Navigation';
 import TourCard from '../../components/TourCard';
 import CheckListGroup from './athoms/CheckListGroup';
 import CheckListItem from './athoms/CheckListItem';
@@ -12,7 +11,6 @@ import SliderForm from './components/SliderForm';
 export default function TourPackage() {
   return (
     <>
-      <Navigation />
       <main className="w-full h-full bg-white">
         <section
           className={
@@ -78,15 +76,15 @@ export default function TourPackage() {
           <div className='flex flex-col w-full gap-6'>
             <SearchStats counter={16}/>
             <div className="grid grid-cols-3 grid-rows-3 w-full h-fit gap-8 ">
-              <TourCard fill/>
-              <TourCard fill/>
-              <TourCard fill/>
-              <TourCard fill/>
-              <TourCard fill/>
-              <TourCard fill/>
-              <TourCard fill/>
-              <TourCard fill/>
-              <TourCard fill/>
+              <TourCard fill url='1'/>
+              <TourCard fill url='1'/>
+              <TourCard fill url='1'/>
+              <TourCard fill url='1'/>
+              <TourCard fill url='1'/>
+              <TourCard fill url='1'/>
+              <TourCard fill url='1'/>
+              <TourCard fill url='1'/>
+              <TourCard fill url='1'/>
             </div>
           </div>
         </section>
