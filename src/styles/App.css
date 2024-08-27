@@ -1,0 +1,29 @@
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  color: #fc5056;
+}
+
+.slick-dots li button:before {
+  font-size: 8px;
+}
+
+.chk input {
+  display: none;
+}
+
+.chk span {
+  @apply flex items-center justify-center border border-gray-400 size-4 transition-all;
+  border-radius: 4px;
+  align-self: center;
+  justify-self: center;
+  background-color: transparent;
+}
+
+.chk input:checked + span {
+  @apply bg-rose-500 border-gray-500 border-collapse transition-all
+}
