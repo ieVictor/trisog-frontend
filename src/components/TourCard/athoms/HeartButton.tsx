@@ -6,7 +6,7 @@ export default function HeartButton() {
   return (
     <button 
       className={`
-        flex absolute right-3 top-3 items-center p-2 rounded-full text-black bg-white border border-transparent
+        flex absolute right-3 top-3 items-center p-2 rounded-full text-black bg-white border border-transparent z-50
         ${!heartFill && 'transition-colors  hover:bg-rose-400 hover:text-white'}
         ${heartFill && 'transition-colors hover:border hover:border-rose-400'}
       `}
