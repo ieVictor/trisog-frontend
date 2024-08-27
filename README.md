@@ -15,7 +15,7 @@
 
 <div align="center">
   <br/>
-  <img src="docs/home.jpg" alt="Home page">
+  <img src="public/home.jpeg" alt="Home page">
 </div>
 
 > The software developed, named Trisog, is a web application designed to provide a seamless experience similar to Airbnb, focusing on offering a comprehensive catalog of tours and travel experiences. The application allows users to explore, book, and manage tours, while enabling administrators to perform CRUD operations to maintain and update the tour listings effectively.
