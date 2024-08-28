@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 const NAV_ITEMS = [
   { label: 'Home', link: '/', protected: false },
   { label: 'About', link: '/about', protected: false },
-  { label: 'Tours', link: '/tours', protected: true },
+  { label: 'Tours', link: '/tours', protected: false },
   { label: 'Destination', link: '/destination', protected: false },
   { label: 'Blog', link: '/blog', protected: false },
   { label: 'Pages', link: '/pages', protected: false },
