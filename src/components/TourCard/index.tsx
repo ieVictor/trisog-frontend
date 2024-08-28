@@ -2,7 +2,12 @@ import { Clock } from "@phosphor-icons/react";
 import Rating from "./athoms/Rating";
 import Placeholder from '../../assets/tourCardPlaceholder.png'
 import HeartButton from "./athoms/HeartButton";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../hooks/userHooks";
+import useModal from "../../hooks/modalHooks";
+import Login from "../Modal/components/Login";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type TourCardProps = {
   fill?: boolean
@@ -10,6 +15,22 @@ type TourCardProps = {
 }
 
 export default function TourCard(props: TourCardProps) {
+  const navigate = useNavigate();
+  const userHooks = useUser();
+  const { openModal } = useModal();
+  
+  const handleClick = () => {
+    if (!userHooks.user) {
+      toast.info('Create an account to access this Tour!');
+      return openModal(
+        <Login/>,
+        "Log in or Sign Up"
+      )
+    }
+
+    return navigate(props.url)
+  }
+
   return (
     <div 
       className={
@@ -18,7 +39,7 @@ export default function TourCard(props: TourCardProps) {
       }
     >
       <HeartButton/>
-      <Link to={props.url}>
+      <a onClick={handleClick} className="cursor-pointer">
         <img src={Placeholder} alt="Coast" className="w-full"/>
         <div className="flex flex-col gap-3 px-4">
           <hgroup className="gap-2.5 w-full text-start">
@@ -43,7 +64,7 @@ export default function TourCard(props: TourCardProps) {
             <span className="font-script text-lg text-blue-950">$520</span>
           </data>
         </div>
-      </Link>
+      </a>
     </div>
   )
 }

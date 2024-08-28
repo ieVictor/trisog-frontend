@@ -14,6 +14,7 @@ export default function AuthButton(props: AuthButtonProps) {
         " border-gray-300 rounded-lg bg-white hover-bright"
       }
       onClick={props.onClick}
+      type="button"
     >
       {props.socialMedia == "facebook" ? <FacebookLogo size={20}/> : <GoogleLogo size={20}/>}
       <span className="w-full text-center text-body-s text-black">{props.content}</span>
