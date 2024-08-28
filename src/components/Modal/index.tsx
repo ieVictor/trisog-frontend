@@ -1,12 +1,11 @@
 import { X } from "@phosphor-icons/react";
+import useModal from "../../hooks/modalHooks";
 
-type ModalProps = {
-  modalTitle: string;
-  children: React.ReactNode
-  onCancel: () => void
-}
+export default function Modal() {
+  const { isOpen, closeModal, content, title } = useModal();
 
-export default function Modal(props: ModalProps) {
+  if (!isOpen) return null;
+
   return (
     <div 
       className={
@@ -17,7 +16,7 @@ export default function Modal(props: ModalProps) {
     >
       <div 
         className="bg-black opacity-50 absolute size-full" 
-        onClick={props.onCancel}
+        onClick={closeModal}
       />
       <div 
         className={
@@ -33,15 +32,15 @@ export default function Modal(props: ModalProps) {
         >
           <X 
             size={16} 
-            onClick={props.onCancel} 
+            onClick={closeModal} 
             className="cursor-pointer size-5 rounded hover:bg-gray-200 transition-all"
           />
           <h6 className="text-subtitle text-blue-950 w-full text-center">
-            {props.modalTitle}
+            {title} 
           </h6>
         </hgroup>
         <div className="flex flex-col gap-10 p-6 w-full h-fit">
-          {props.children}
+          {content}
         </div>
       </div>
     </div>
