@@ -10,6 +10,7 @@ export type AverageTexts =
   | "Good"
   | "Excellent"
   | "Perfect"
+  | "-"
 
 const AVERAGE_DISPLAY_COLORS: Record<number, AverageColors> = {
   5: "bg-rose-500",
@@ -30,7 +31,8 @@ const AVERAGE_DISPLAY_TEXTS: Record<number, AverageTexts> = {
 }
 
 
-export function getTextByAverage(Average: number): AverageTexts {
+export function getTextByAverage(Average: number, Counter: number): AverageTexts {
+  if (!Counter) return "-"
   return AVERAGE_DISPLAY_TEXTS[Average]
 }
 

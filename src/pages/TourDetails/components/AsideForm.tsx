@@ -4,8 +4,13 @@ import TicketSelector from "../athoms/TicketSelector";
 import Button from "../../../components/Button";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getTicketValues } from "../helpers/TicketSelectorHelper";
+import { parseAbsolute } from "@internationalized/date";
 
 type AsideFormProps = {
+  date: {
+    initialDate: string;
+    finalDate: string;
+  }
   valuePerPerson: number;
   maxPeople: number;
   minAge: number;
@@ -45,7 +50,6 @@ export default function AsideForm(props: AsideFormProps) {
   }
 
   useEffect(() => handleTotal(), [daysCounter, handleTotal])
-
   return (
     <form className="w-full h-fit flex flex-col max-w-[369px] gap-5 px-7 py-8 bg-gray-200 text-blue-950">
       <h4 className="text-h4 text-blue-950">
@@ -59,6 +63,8 @@ export default function AsideForm(props: AsideFormProps) {
           inputWrapper: 'bg-white rounded h-12',
           input: 'text-body-s',
         }}
+        minValue={parseAbsolute(props.date.initialDate, 'UTC')}
+        maxValue={parseAbsolute(props.date.finalDate, 'UTC')}
         label="Date"
         labelPlacement="outside"
         radius="sm"
