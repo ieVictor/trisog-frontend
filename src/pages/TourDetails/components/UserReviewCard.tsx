@@ -2,8 +2,7 @@ import Rating from "../../../components/TourCard/athoms/Rating";
 
 type UserReviewCardProps = {
   user: {
-    firstName: string;
-    lastName?: string;
+    username: string
     img?: string;
     reviewsCounter?: number;
   } 
@@ -23,7 +22,7 @@ export default function UserReviewCard(props: UserReviewCardProps) {
             {props.date}
           </span>
           <h6 className="text-h6 text-blue-950">
-            {props.user.firstName + " " + props.user.lastName}
+            {props.user.username}
           </h6>
           <span className="flex flex-row gap-2 text-body-s text-gray-400">
             <Rating rating={props.rating}/>
