@@ -25,7 +25,6 @@ export default function SecondSection() {
     fetchData();
   }, []) 
 
-  console.log(data);
   return (
     <section className="flex flex-col w-full bg-white  gap-12 px-32 py-32 pt-36 overflow-hidden">
       <CenteredTitle title="Most Popular Tours" subtitle="Tours"/>
