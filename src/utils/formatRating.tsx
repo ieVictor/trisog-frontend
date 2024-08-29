@@ -1,0 +1,1 @@
+export function formatRating(V: number) { return (Math.floor(V * 10) / 10) }
