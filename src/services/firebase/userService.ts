@@ -8,7 +8,6 @@ type AuthResponse = {
   error: string | null
 }
 
-
 const errorMessages: { [key: string]: string } = {
   'auth/wrong-password': 'The password is incorrect. Please try again',
   'auth/weak-password': 'The password must be at least 6 characters long',
