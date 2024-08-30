@@ -19,10 +19,25 @@ import { Image, VideoCamera } from '@phosphor-icons/react';
 export default function TourDetails() {
   const [data, setData] = useState<UniqueTour | null>(null);
   const [reviewData, setReviewData] = useState<Review[] | null>(null);
+  const URL = window.location.pathname.split('/tours/')[1];
+
+  async function onFormSubmit() {
+    try {
+      const response = await reviewService.getReviewsByTourId(URL);
+      if (response) {
+        if (response.status !== 200) {
+          toast.warning('Reviews request Error');
+          return;
+        }
+        setReviewData(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     async function fetchData() {
-      const URL = window.location.pathname.split('/tours/')[1];
       try {
         const response = await tourService.getTourById(URL);
         const reviewResponse = await reviewService.getReviewsByTourId(URL);
@@ -37,7 +52,7 @@ export default function TourDetails() {
       }
     }
     fetchData();
-  }, []);
+  }, [URL]);
 
   return (
     data && (
@@ -101,7 +116,11 @@ export default function TourDetails() {
                   latitude={data.latitude}
                   longitude={data.longitude}
                 />
-                <AverageReview ratings={data.ratings} average={data.rating} reviewsCounter={data._count.reviews}/>
+                <AverageReview
+                  ratings={data.ratings}
+                  average={data.rating}
+                  reviewsCounter={data._count.reviews}
+                />
                 {reviewData && (
                   <>
                     <ReviewsList>
@@ -111,10 +130,12 @@ export default function TourDetails() {
                           rating={review.average}
                           date={formatDate(review.createdAt)}
                           user={{
+                            creatorName:review.creatorName,
                             username: review.user.username,
                             img: review.user.img,
-                            reviewsCounter: 0,
+                            reviewsCounter: review.user._count.reviews,
                           }}
+                          anonymous={review.anonymous}
                         >
                           {review.overview}
                         </UserReviewCard>
@@ -122,7 +143,7 @@ export default function TourDetails() {
                     </ReviewsList>
                   </>
                 )}
-                <ReviewForm />
+                <ReviewForm tourId={data.id} onSubmit={onFormSubmit} />
               </div>
             </div>
             <AsideForm
