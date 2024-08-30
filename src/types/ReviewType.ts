@@ -3,6 +3,8 @@ export type Review = {
   tourId: string;
   userId: string;
   overview: string;
+  creatorName: string;
+  creatorEmail: string;
 
   average: number;
   services: number;
@@ -18,6 +20,21 @@ export type Review = {
     email: string;
     username: string;
     img: string;
+    _count: { reviews: number };
   }
+
+  anonymous: boolean;
+} 
+
+export type ReviewInsert = {
+  tourId: string
+  userId: string;
+  overview: string;
+  services: number;
+  locations: number;
+  amenities: number;
+  prices: number;
+  food: number;
+  room: number;
 }
 
