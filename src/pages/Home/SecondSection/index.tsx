@@ -38,7 +38,7 @@ export default function SecondSection() {
         >
           {
             data && data.map(tour => (
-              <TourCard data={tour} url={`/tours/${tour.id}`}/>
+              <TourCard data={tour} url={`/tours/${tour.id}`} key={tour.id}/>
             ))
           }
         </Slider>
