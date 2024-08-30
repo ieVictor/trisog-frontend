@@ -5,7 +5,6 @@ import './styles/index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import TourPackage from './pages/TourPackage/index.tsx'
 import TourDetails from './pages/TourDetails/index.tsx'
-import { TourModel } from './models/tourModel.ts'
 import Home from './pages/Home/index.tsx'
 import { UserProvider } from './contexts/UserContext.tsx'
 import { ToastContainer } from 'react-toastify'
@@ -22,7 +21,7 @@ const router = createBrowserRouter([
         path: "/tours/:id",
         element: <PrivateRoute/>,
         children: [
-          {path: "/tours/:id", element: <TourDetails data={ TourModel.data }/> }
+          {path: "/tours/:id", element: <TourDetails/> }
         ],
       }
     ],
