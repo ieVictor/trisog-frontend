@@ -13,9 +13,11 @@ const Button = ({ text, type, onClick, disabled, fill}: ButtonProps) => {
       onClick={onClick}
       disabled={disabled}
       className={
-        "flex  px-7 items-center text-white bg-rose-500 " +
-        "font-sans text-center rounded-lg h-11 transition hover:brightness-90 " +
-        (fill ? "w-full" : "w-fit")
+        "flex px-7 items-center" +
+        " enabled:text-white enabled:bg-rose-500 enabled:hover-bright" +
+        " disabled:text-white disabled:bg-rose-200" +
+        " font-sans text-center rounded-lg h-11 transition" +
+        (fill ? " w-full" : " w-fit")
       }
     >
       <span className="flex-1 font-sans font-normal text-base">{text}</span>

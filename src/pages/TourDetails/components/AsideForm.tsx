@@ -5,6 +5,7 @@ import Button from "../../../components/Button";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getTicketValues } from "../helpers/TicketSelectorHelper";
 import { parseAbsolute } from "@internationalized/date";
+import { calculateDurationInDays } from "../../../utils/formatDate";
 
 type AsideFormProps = {
   date: {
@@ -17,6 +18,7 @@ type AsideFormProps = {
 }
 
 export default function AsideForm(props: AsideFormProps) {
+  const tourDuration = calculateDurationInDays(props.date.initialDate, props.date.finalDate);
   const personCounter = useRef(null)
   const [daysCounter, setDaysCounter] = useState<number>(0);
   const [date, setDate] = useState<string>("");
@@ -83,13 +85,11 @@ export default function AsideForm(props: AsideFormProps) {
         }}
         onChange={(v) => setDaysCounter(Number(v.target.value))}
       >
-        <SelectItem key={1}>1 day</SelectItem>
-        <SelectItem key={2}>2 day</SelectItem>
-        <SelectItem key={3}>3 day</SelectItem>
-        <SelectItem key={4}>4 day</SelectItem>
-        <SelectItem key={5}>5 day</SelectItem>
-        <SelectItem key={6}>6 day</SelectItem>
-        <SelectItem key={7}>7 day</SelectItem>
+        {[...Array(tourDuration)].map((_, index) => (
+          <SelectItem key={index + 1} textValue={String(index + 1)}>
+            {index + 1} day{index + 1 > 1 ? 's' : ''}
+          </SelectItem>
+        ))}
       </Select>
       <div className="flex flex-col gap-1 w-full">
         <span className="text-subtitle text-blue-950">Ticket</span>
