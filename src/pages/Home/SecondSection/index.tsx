@@ -1,14 +1,18 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import TourCard from "../../../components/TourCard";
-import StatsItem from "./athoms/StatsItem";
-import CenteredTitle from "../../../components/CenteredTitle";
+import TourCard from '../../../components/TourCard';
+import StatsItem from './athoms/StatsItem';
+import CenteredTitle from '../../../components/CenteredTitle';
+import DESTINATIONS from '../../../models/Destinations';
+import { useHomeData } from '../../../hooks/useHomeData';
 
 export default function SecondSection() {
+  const { tours, usersCounter, reviewsCounter } = useHomeData();
+
   return (
     <section className="flex flex-col w-full bg-white  gap-12 px-32 py-32 pt-36 overflow-hidden">
-      <CenteredTitle title="Most Popular Tours" subtitle="Tours"/>
+      <CenteredTitle title="Most Popular Tours" subtitle="Tours" />
       <div className="w-full h-[520px] ">
         <Slider
           infinite={false}
@@ -17,19 +21,32 @@ export default function SecondSection() {
           speed={500}
           slidesToShow={4}
         >
-          <TourCard url="tours/1"/>
-          <TourCard url="tours/1"/>
-          <TourCard url="tours/1"/>
-          <TourCard url="tours/1"/>
+          {tours &&
+            tours.tours.map((tour) => (
+              <TourCard data={tour} url={`/tours/${tour.id}`} key={tour.id} />
+            ))}
         </Slider>
       </div>
-      <hr/>
+      <hr />
       <data className="flex flex-row items-center justify-between">
-        <StatsItem value="120+" description="Total Destination"/>
-        <StatsItem value="500+" description="Travel Package"/>
-        <StatsItem value="12k+" description="Total Travelers"/>
-        <StatsItem value="7k+" description="Positive Reviews"/>
+        {tours && (
+          <>
+            <StatsItem
+              value={
+                String(
+                  DESTINATIONS.reduce((total, destination) => {
+                    return total + destination.country.length;
+                  }, 0)
+                ) + '+'
+              }
+              description="Total Destination"
+            />
+            <StatsItem value={tours.total_tours + '+'} description="Travel Packages" />
+            <StatsItem value={usersCounter + "k+"} description="Total Travelers" />
+            <StatsItem value={reviewsCounter + "k+"} description="Positive Reviews" />
+          </>
+        )}
       </data>
     </section>
-  )
+  );
 }

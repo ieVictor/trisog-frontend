@@ -1,4 +1,5 @@
 import { Heart, MapPin, ShareNetwork } from "@phosphor-icons/react";
+import { useState } from "react";
 
 type TitleProps = {
   children: React.ReactNode
@@ -6,6 +7,8 @@ type TitleProps = {
 }
 
 export default function Title(props: TitleProps) {
+  const [heartFill, setHeartFill] = useState<boolean>(false);
+  const handleHeartClick = () => setHeartFill(!heartFill);
   return (
     <hgroup className="w-full flex flex-col gap-2.5">
       <div className="w-full flex flex-row justify-between">
@@ -24,8 +27,11 @@ export default function Title(props: TitleProps) {
           </a>
         </div>
         <div className="flex flex-row gap-3 items-center">
-          <ShareNetwork size={24} />
-          <Heart size={24} />
+          <ShareNetwork size={24} className="bg-white hover-bright rounded"/>
+          { heartFill ?
+            <Heart size={24} weight="fill" className="bg-white text-rose-500 transition-all hover:text-rose-400" onClick={handleHeartClick}/> :
+            <Heart size={24} className="bg-white hover:text-rose-500 transition-all" onClick={handleHeartClick}/>
+          }
         </div>
       </div>
       <h4 className="text-start font-display font-bold text-3xl">{props.children}</h4>

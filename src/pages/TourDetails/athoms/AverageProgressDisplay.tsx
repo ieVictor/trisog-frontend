@@ -1,4 +1,5 @@
 import { Progress } from "@nextui-org/react"
+import { formatRating } from "../../../utils/formatRating"
 
 type AverageProgressDisplayProps = {
   average: number
@@ -18,7 +19,7 @@ export default function AverageProgressDisplay(props: AverageProgressDisplayProp
         maxValue={5} 
         minValue={0}
       />
-      <span className="text-body-s text-gray-500 self-end !leading-4">{props.average}</span>
+      <span className="text-body-s text-gray-500 self-end !leading-4 w-[22px]">{formatRating(props.average)}</span>
     </div>
   )
 }

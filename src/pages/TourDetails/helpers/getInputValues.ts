@@ -1,14 +1,14 @@
-import { RefObject } from "react";
+import { RefObject } from 'react';
 
-export function getInputValues(divRef: RefObject<HTMLDivElement>){
+export function getInputValues(divRef: RefObject<HTMLDivElement>) {
   const div = divRef.current;
   if (div) {
     const inputs = div.querySelectorAll('input, textarea');
     const values = Array.from(inputs).reduce((acc, input) => {
       acc[(input as HTMLInputElement).name] = (input as HTMLInputElement).value;
-      return acc
+      return acc;
     }, {} as Record<string, string>);
-    return values
+    return values;
   }
-  return undefined
+  return undefined;
 }
