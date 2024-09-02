@@ -15,7 +15,7 @@ type ReviewFormProps = {
 };
 
 export default function ReviewForm(props: ReviewFormProps) {
-  const [anonymous, setAnonymmous] = useState<boolean>(false);
+  const [anonymous, setAnonymous] = useState<boolean>(false);
   const servicesRef = useRef<RatingSelectorHandle>(null);
   const locationsRef = useRef<RatingSelectorHandle>(null);
   const amenitiesRef = useRef<RatingSelectorHandle>(null);
@@ -44,10 +44,9 @@ export default function ReviewForm(props: ReviewFormProps) {
           creatorName: anonymous ? inputValues['username'] : user.displayName,
           creatorEmail: anonymous ? inputValues['email'] : user.email,
           overview: inputValues['overview'],
-          anonymous: anonymous,
           ...content
         };
-        const response = await reviewService.createReview({...data})
+        const response = await reviewService.createReview({...data}, anonymous)
         if (response)
           if (response.status !== 201) return toast.error(response.data.msg);
           await props.onSubmit();
@@ -96,6 +95,7 @@ export default function ReviewForm(props: ReviewFormProps) {
           validate={/^[A-Za-zÀ-ÖØ-öø-ÿ'\-0-9,. ]{10,}$/}
           errorMessage='Invalid comment'
           name='overview'
+          placeholder='Write your comment'
         />
         <div className='flex flex-row justify-between items-center'>
           <Button
@@ -104,7 +104,7 @@ export default function ReviewForm(props: ReviewFormProps) {
             type="button"
           />
           <Tooltip showArrow content={"Don't want to show your profile when writing a review? Make an anonymous comment"} delay={2000} placement='bottom-start'>
-            <Checkbox radius='sm' size='md' color='danger' classNames={{ label: "text-body-s"}} onClick={() => setAnonymmous(!anonymous)}>
+            <Checkbox radius='sm' size='md' color='danger' classNames={{ label: "text-body-s"}} onClick={() => setAnonymous(!anonymous)}>
               Anonymous
             </Checkbox>
           </Tooltip>
