@@ -9,11 +9,13 @@ import Home from './pages/Home/index.tsx'
 import { UserProvider } from './contexts/UserContext.tsx'
 import { ToastContainer } from 'react-toastify'
 import { PrivateRoute } from './utils/PrivateRoute.tsx'
+import Error from './pages/Error/index.tsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
+    errorElement: <Error />,
     children: [
       { path: "/", element: <Home/> },
       {
