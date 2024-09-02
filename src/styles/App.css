@@ -3,13 +3,22 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.slick-dots {
+  @apply !-bottom-14;
+}
+
 .slick-dots li.slick-active button:before {
   opacity: 0.75;
   color: #fc5056;
 }
+.slick-dots li.slick-active {
+  opacity: 0.95;
+  color: #fc5056;
+}
 
 .slick-dots li button:before {
-  font-size: 8px;
+  @apply !text-rose-500 !text-[9px];
 }
 
 .chk input {
