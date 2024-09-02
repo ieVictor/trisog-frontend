@@ -21,9 +21,18 @@ class ReviewService {
     }
     return null
   }
-  async createReview(data: ReviewInsert): Promise<AxiosResponse<ReviewResponse> | null> {
+  async getReviewsCounter(): Promise<AxiosResponse<number> | null> {
     try {
-      const response = await api.post(`reviews`, {...data})
+      const response = await api.get(`reviews/counter`);
+      return response;
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) return error.response;
+    }
+    return null
+  }
+  async createReview(data: ReviewInsert, anonymous?: boolean): Promise<AxiosResponse<ReviewResponse> | null> {
+    try {
+      const response = await api.post(`reviews?anonymous=${anonymous}`, {...data})
       return response
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) { return error.response };
