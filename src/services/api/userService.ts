@@ -33,7 +33,16 @@ class UserService {
     } catch (error) {
       if (axios.isAxiosError(error) && error.response)  return error.response;
     }
+    return null
+  } 
 
+  async getUsersCounter(): Promise<AxiosResponse<number> | null> {
+    try {
+      const response = await api.get(`/users/counter`) 
+      return response;
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response)  return error.response;
+    }
     return null
   } 
 }
