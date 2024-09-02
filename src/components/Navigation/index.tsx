@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 const NAV_ITEMS = [
   { label: 'Home', link: '/', protected: false },
   { label: 'About', link: '/about', protected: false },
-  { label: 'Tours', link: '/tours', protected: false },
+  { label: 'Tours', link: '/tours', protected: true },
   { label: 'Destination', link: '/destination', protected: false },
   { label: 'Blog', link: '/blog', protected: false },
   { label: 'Pages', link: '/pages', protected: false },
@@ -24,7 +24,7 @@ const handleStyle = ({ isActive, isPending }: NavLinkRenderProps) =>
   isPending ? pendingStyle : isActive ? activeStyle : pendingStyle;
 
 export default function Navigation() {
-  const userHooks  = useUser();
+  const userHooks = useUser();
   const { openModal } = useModal();
   const navigate = useNavigate();
 
@@ -32,16 +32,18 @@ export default function Navigation() {
     openModal(<Login />, 'Login or Sign Up');
   };
 
-  const handleProtectedLink = (event: React.MouseEvent<HTMLAnchorElement>, item: typeof NAV_ITEMS[0]) => {
+  const handleProtectedLink = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    item: (typeof NAV_ITEMS)[0]
+  ) => {
     if (item.protected && !userHooks.user) {
       event.preventDefault();
-      toast.info("You need to be logged in to access this feature");
+      toast.info('You need to be logged in to access this feature');
       return handleLogin();
     }
-    
+
     return navigate(item.link);
   };
-
 
   return (
     <header className="top-0 w-full h-[72px] bg-white flex flex-row justify-between px-[50px] sticky z-[10000]">
@@ -58,7 +60,11 @@ export default function Navigation() {
           {NAV_ITEMS.map((item) => {
             return (
               <li key={item.label}>
-                <NavLink to={item.link} className={handleStyle} onClick={(event) =>  handleProtectedLink(event, item)}>
+                <NavLink
+                  to={item.link}
+                  className={handleStyle}
+                  onClick={(event) => handleProtectedLink(event, item)}
+                >
                   {item.label}
                 </NavLink>
               </li>
@@ -79,12 +85,14 @@ export default function Navigation() {
             </button>
           </>
         ) : (
-          <>
-            <UserProfile
-              username={userHooks.profile?.data.username}
-              imgURL={userHooks.profile?.data.img}
-            />
-          </>
+          userHooks.profile && (
+            <>
+              <UserProfile
+                username={userHooks.profile.data.username}
+                imgURL={userHooks.profile.data.img}
+              />
+            </>
+          )
         )}
       </div>
     </header>
