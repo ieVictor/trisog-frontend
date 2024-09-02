@@ -35,7 +35,6 @@ export async function fetchData(
         }`
       : '';
 
-    console.log(queryString);
     const response = await tourService.getTours(queryString);
     if (response && response.status === 200) return response.data;
 

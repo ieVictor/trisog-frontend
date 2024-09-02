@@ -20,24 +20,36 @@ const CHECKBOX_STYLE = {
 };
 
 export default function TourPackage() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const typeParam = searchParams.get('type');
   const guestsParam = searchParams.get('guests');
 
-  const locationState = useMemo(() => ({
-    destination: searchParams.get('destination'),
-    type: typeParam ? new Set(typeParam.split(',').map(Number)) : new Set<number>(),
-    guests: guestsParam ? parseInt(guestsParam, 10) : null,
-    date: searchParams.get('date'),
-  }), [searchParams, typeParam, guestsParam]);
+  const locationState = useMemo(
+    () => ({
+      destination: searchParams.get('destination'),
+      type: typeParam
+        ? new Set(typeParam.split(',').map(Number))
+        : new Set<number>(),
+      guests: guestsParam ? parseInt(guestsParam, 10) : null,
+      date: searchParams.get('date'),
+    }),
+    [searchParams, typeParam, guestsParam]
+  );
 
-  const { state, dispatch } = useTourPackage({...locationState, ...initialState});
+  const { state, dispatch } = useTourPackage({
+    ...locationState,
+    ...initialState,
+  });
+
   const { categories } = useCategories();
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
 
   useEffect(() => {
     dispatch({ type: 'SET_SEARCH', payload: locationState.destination || '' });
-    dispatch({ type: 'SET_CAT_FILTER', payload: Array.from(locationState.type).map(Number) });
+    dispatch({
+      type: 'SET_CAT_FILTER',
+      payload: Array.from(locationState.type).map(Number),
+    });
     dispatch({ type: 'SET_DATE', payload: locationState.date || null });
     dispatch({ type: 'SET_GUESTS', payload: locationState.guests || null });
   }, [locationState, dispatch]);
@@ -61,8 +73,9 @@ export default function TourPackage() {
       <main className="w-full h-full bg-white">
         <section
           className={
-            'w-full h-72 bg-tourpackage-first-section bg-cover bg-center ' +
-            'flex flex-col text-center justify-center g-16 relative text-white'
+            'w-full h-72 bg-cover bg-center' +
+            " bg-[url('https://firebasestorage.googleapis.com/v0/b/trisog-compass.appspot.com/o/beachHouses.jpg?alt=media&token=0ff16ec1-d35b-46db-b704-9a465eff4798')]" +
+            ' flex flex-col text-center justify-center g-16 relative text-white'
           }
         >
           <h1 className="font-bold font-display text-5xl">Tour Package</h1>
@@ -74,10 +87,20 @@ export default function TourPackage() {
 
         <section className="flex flex-row w-full h-full gap-8 p-28">
           <aside className="max-w-[271px] flex flex-col gap-8">
-            <SearchForm onSubmit={(value) => dispatch({
-              type: 'SET_SEARCH',
-              payload: value
-            })}/>
+            <SearchForm
+              onSubmit={(value) => {
+                dispatch({
+                  type: 'SET_SEARCH',
+                  payload: value,
+                });
+                setSearchParams({
+                  destination: value,
+                  type: typeParam ? typeParam : '',
+                  date: locationState.date ? locationState.date : '',
+                  guests: guestsParam ? guestsParam : '',
+                });
+              }}
+            />
             <SliderForm
               onSubmit={(value) =>
                 dispatch({ type: 'SET_SLIDER_VALUE', payload: value })

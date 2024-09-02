@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { api } from "./api";
-import { PaginationTourResponse, UniqueTour } from "../../types/TourType";
+import { PaginationTourResponse, Tour, UniqueTour } from "../../types/TourType";
 
 class TourService {
   async getTours(queryString: string): Promise<AxiosResponse<PaginationTourResponse> | null> {
@@ -22,6 +22,16 @@ class TourService {
     }
     return null;
   };
+
+  async getToursByCategory(category: number): Promise<AxiosResponse<Tour[]> | null> {
+    try {
+      const response = await api.get(`/tours/categories?categories=${category}`);
+      return response;
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) return error.response;
+    }
+    return null
+  }
 }
 
 export default new TourService();

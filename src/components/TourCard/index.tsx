@@ -20,7 +20,6 @@ export default function TourCard({ data, fill, url }: TourCardProps) {
   const navigate = useNavigate();
   const userHooks = useUser();
   const { openModal } = useModal();
-
   const handleClick = () => {
     if (!userHooks.user) {
       toast.info('Create an account to access this Tour!');
