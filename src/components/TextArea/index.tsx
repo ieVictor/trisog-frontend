@@ -12,7 +12,6 @@ export default function TextArea(props: TextAreaProps) {
 
   const isInvalid = useMemo(() => {
     if (value === '') return false;
-    if (props.validate) console.log(value.match(props.validate)) 
     if (props.validate) return value.match(props.validate) ? false : true;
     return false;
   }, [value, props.validate]);
