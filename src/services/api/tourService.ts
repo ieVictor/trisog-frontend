@@ -1,11 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import { api } from "./api";
-import { Tour, UniqueTour } from "../../types/TourType";
+import { PaginationTourResponse, UniqueTour } from "../../types/TourType";
 
 class TourService {
-  async getTours(): Promise<AxiosResponse<Tour[]> | null> {
+  async getTours(queryString: string): Promise<AxiosResponse<PaginationTourResponse> | null> {
     try {
-      const response = await api.get('/tours');
+      const response = await api.get(`/tours${queryString}`);
       return response;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) return error.response;
