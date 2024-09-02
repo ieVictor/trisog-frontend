@@ -15,7 +15,7 @@
     "@phosphor-icons/react": "^2.1.7",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.5",
-    "firebase": "^10.13.0",
+    "firebase": "^10.13.1",
     "framer-motion": "^11.3.29",
     "leaflet": "^1.9.4",
     "postcss": "^8.4.41",
