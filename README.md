@@ -1,4 +1,4 @@
-# Compass Challenge - JukeBoxer UI
+# Compass Challenge - Trisog UI
 
 <div align="center">
   <img src="https://img.shields.io/static/v1?label=React&message=library&color=blue&style=for-the-badge&logo=react"/>  
