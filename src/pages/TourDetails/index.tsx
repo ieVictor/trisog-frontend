@@ -110,7 +110,7 @@ export default function TourDetails() {
                     </button>
                   </div>
                 </div>
-                <Title location={`${data.country}, ${data.city}`}>
+                <Title location={`${data.country.name}, ${data.city}`}>
                   {data.title}
                 </Title>
                 <TourInformations

@@ -4,11 +4,10 @@ import Slider from 'react-slick';
 import TourCard from '../../../components/TourCard';
 import StatsItem from './athoms/StatsItem';
 import CenteredTitle from '../../../components/CenteredTitle';
-import DESTINATIONS from '../../../models/Destinations';
 import { useHomeData } from '../../../hooks/useHomeData';
 
 export default function SecondSection() {
-  const { tours, usersCounter, reviewsCounter } = useHomeData();
+  const { tours, usersCounter, reviewsCounter, countriesCounter } = useHomeData();
 
   return (
     <section className="flex flex-col w-full bg-white  gap-12 px-32 py-32 pt-36 overflow-hidden">
@@ -19,6 +18,7 @@ export default function SecondSection() {
           dotsClass="slick-dots -bottom-16 text-rose-500"
           dots
           speed={500}
+          slidesToScroll={4}
           slidesToShow={4}
         >
           {tours &&
@@ -32,13 +32,7 @@ export default function SecondSection() {
         {tours && (
           <>
             <StatsItem
-              value={
-                String(
-                  DESTINATIONS.reduce((total, destination) => {
-                    return total + destination.country.length;
-                  }, 0)
-                ) + '+'
-              }
+              value={String(countriesCounter?.length)}
               description="Total Destination"
             />
             <StatsItem value={tours.total_tours + '+'} description="Travel Packages" />
