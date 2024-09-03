@@ -1,4 +1,4 @@
-import { MagnifyingGlass, User } from '@phosphor-icons/react';
+import { User } from '@phosphor-icons/react';
 import blackLogo from '../../assets/trisog-black-logo.svg';
 import { NavLink, NavLinkRenderProps, useNavigate } from 'react-router-dom';
 import { useUser } from '../../hooks/userHooks';
@@ -6,6 +6,7 @@ import UserProfile from './athoms/UserProfile';
 import Login from '../Modal/components/Login';
 import useModal from '../../hooks/modalHooks';
 import { toast } from 'react-toastify';
+import SearchPopover from './athoms/SearchPopover';
 
 const NAV_ITEMS = [
   { label: 'Home', link: '/', protected: false },
@@ -27,6 +28,11 @@ export default function Navigation() {
   const userHooks = useUser();
   const { openModal } = useModal();
   const navigate = useNavigate();
+
+  const handleSearch = (searchContent: string) => {
+    if (searchContent)
+      navigate(`tours?destination=${searchContent}`);
+  };
 
   const handleLogin = () => {
     openModal(<Login />, 'Login or Sign Up');
@@ -73,7 +79,7 @@ export default function Navigation() {
         </ul>
       </nav>
       <div className="w-fit text-blue-950 flex flex-row items-center gap-2">
-        <MagnifyingGlass size={24} className="cursor-pointer" />
+        <SearchPopover onSubmit={handleSearch} />
         {!userHooks.user ? (
           <>
             <User size={24} className="cursor-pointer" />

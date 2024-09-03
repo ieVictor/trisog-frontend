@@ -20,7 +20,6 @@ export default function TourCard({ data, fill, url }: TourCardProps) {
   const navigate = useNavigate();
   const userHooks = useUser();
   const { openModal } = useModal();
-
   const handleClick = () => {
     if (!userHooks.user) {
       toast.info('Create an account to access this Tour!');
@@ -47,7 +46,7 @@ export default function TourCard({ data, fill, url }: TourCardProps) {
         <div className="flex flex-col gap-3 px-4">
           <hgroup className="gap-2.5 w-full text-start overflow-hidden">
             <sub className="text-gray-400 text-caption w-full">
-              {data.country}, {data.city}
+              {data.country.name}, {data.city}
             </sub>
             <h6 className="text-blue-950 text-h6 h-14" title={data.title}>
               {data.title}

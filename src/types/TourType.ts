@@ -3,7 +3,7 @@ export type Tour = {
   title: string;
   img: string;
   overview: string;
-  country: string;
+  countryId: string;
   city: string;
   latitude: number;
   longitude: number;
@@ -13,6 +13,7 @@ export type Tour = {
   maxPeople: number;
   minAge: number;
   rating: number;
+  country: { name: string };
   _count: { reviews: number };
   categories: {
     tourId: string;
@@ -29,7 +30,7 @@ export type UniqueTour = {
   title: string;
   img: string;
   overview: string;
-  country: string;
+  countryId: string;
   city: string;
   latitude: number;
   longitude: number;
@@ -39,6 +40,7 @@ export type UniqueTour = {
   maxPeople: number;
   minAge: number;
   rating: number;
+  country: { name: string };
   _count: { reviews: number };
   ratings: {
     services: number;

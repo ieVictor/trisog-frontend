@@ -1,5 +1,4 @@
 import Slider from 'react-slick';
-import PhotoDump from '../../../assets/WatchNow.png';
 import LeftSubtitle from '../../../components/LeftSubtitle';
 import CheckMark from './athoms/CheckMark';
 import OutlineButton from './athoms/OutlineButton';
@@ -13,7 +12,7 @@ export default function FourthSection() {
     <section className="w-full bg-white gap-16 p-32 pt-8 flex flex-col">
       <div className="flex flex-col gap-16 w-full text-start">
         <div className="flex flex-row justify-between items-center">
-          <img src={PhotoDump} alt="Photographies" />
+          <img src={'https://firebasestorage.googleapis.com/v0/b/trisog-compass.appspot.com/o/WatchNow.png?alt=media&token=a8cecf5f-3fe0-4ae7-a892-878d66afdf6b'} alt="Photographies" />
           <div className="flex flex-col max-w-[380px] gap-4">
             <hgroup className="w-full gap-5 flex flex-col items-start">
               <LeftSubtitle content="Why Choose Us" />
