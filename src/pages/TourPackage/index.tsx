@@ -12,6 +12,8 @@ import DESTINATIONS from '../../models/Destinations';
 import { useEffect, useMemo, useState } from 'react';
 import { useCategories } from '../../hooks/categoriesHooks';
 import { useSearchParams } from 'react-router-dom';
+import { Country } from '../../types/CountryType';
+import countryService from '../../services/api/countryService';
 
 const CHECKBOX_STYLE = {
   label: 'text-action',
@@ -20,9 +22,18 @@ const CHECKBOX_STYLE = {
 };
 
 export default function TourPackage() {
+  const [countries, setCountries] = useState<Country[] | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeParam = searchParams.get('type');
   const guestsParam = searchParams.get('guests');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const countriesResponse = await countryService.getCountries();
+      if (countriesResponse) setCountries(countriesResponse.data);
+    };
+    fetchData();
+  });
 
   const locationState = useMemo(
     () => ({
@@ -131,36 +142,40 @@ export default function TourPackage() {
                   </Checkbox>
                 ))}
             </CheckBoxList>
-            <CheckBoxList title="Destination">
-              {DESTINATIONS.map((destination) => (
-                <CheckListGroup
-                  title={destination.continent}
-                  key={destination.continent}
-                >
-                  {destination.country.map((item) => (
-                    <Checkbox
-                      key={item}
-                      color="danger"
-                      radius="sm"
-                      onValueChange={() =>
-                        dispatch({
-                          type: 'SET_COUNTRY_FILTER',
-                          payload: state.countryFilter.includes(item)
-                            ? state.countryFilter.filter(
-                                (country) => country !== item
-                              )
-                            : [...state.countryFilter, item],
-                        })
-                      }
-                      classNames={CHECKBOX_STYLE}
-                      className="text-gray-600"
+            {countries && (
+              <>
+                <CheckBoxList title="Destination">
+                  {DESTINATIONS.map((destination) => (
+                    <CheckListGroup
+                      title={destination.continent}
+                      key={destination.continent}
                     >
-                      {item}
-                    </Checkbox>
+                      {countries.filter(item => item.region === destination.continent).map((item) => (
+                        <Checkbox
+                          key={item.id}
+                          color="danger"
+                          radius="sm"
+                          onValueChange={() =>
+                            dispatch({
+                              type: 'SET_COUNTRY_FILTER',
+                              payload: state.countryFilter.includes(item.id)
+                                ? state.countryFilter.filter(
+                                    (country) => country !== item.id
+                                  )
+                                : [...state.countryFilter, item.id],
+                            })
+                          }
+                          classNames={CHECKBOX_STYLE}
+                          className="text-gray-600"
+                        >
+                          {item.name}
+                        </Checkbox>
+                      ))}
+                    </CheckListGroup>
                   ))}
-                </CheckListGroup>
-              ))}
-            </CheckBoxList>
+                </CheckBoxList>
+              </>
+            )}
 
             <CheckBoxList title="Reviews">
               {[...Array(5)].map((_, index) => (

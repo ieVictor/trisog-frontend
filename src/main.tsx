@@ -10,6 +10,8 @@ import { UserProvider } from './contexts/UserContext.tsx'
 import { ToastContainer } from 'react-toastify'
 import { PrivateRoute } from './utils/PrivateRoute.tsx'
 import Error from './pages/Error/index.tsx'
+import Destination from './pages/Destination/index.tsx'
+import DestinationDetails from './pages/DestinationDetails/index.tsx'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
           { path: "/tours", element: <TourPackage/>},
           { path: "/tours/:id", element: <TourDetails/>}
         ]
+      },
+      {
+        path: "/destination",
+        element: <PrivateRoute/>,
+        children: [
+          { path: "/destination", element: <Destination/> },
+          { path: "/destination/:id", element: <DestinationDetails/> }
+        ],
       },
     ],
   },
