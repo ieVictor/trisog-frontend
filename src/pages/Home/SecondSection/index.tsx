@@ -18,6 +18,7 @@ export default function SecondSection() {
           dotsClass="slick-dots -bottom-16 text-rose-500"
           dots
           speed={500}
+          slidesToScroll={4}
           slidesToShow={4}
         >
           {tours &&

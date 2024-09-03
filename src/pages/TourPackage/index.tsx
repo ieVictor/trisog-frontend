@@ -24,13 +24,17 @@ const CHECKBOX_STYLE = {
 export default function TourPackage() {
   const [countries, setCountries] = useState<Country[] | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [loaded, setLoaded] = useState<boolean>(false);
   const typeParam = searchParams.get('type');
   const guestsParam = searchParams.get('guests');
 
   useEffect(() => {
     const fetchData = async () => {
-      const countriesResponse = await countryService.getCountries();
-      if (countriesResponse) setCountries(countriesResponse.data);
+      if (!loaded) {
+        const countriesResponse = await countryService.getCountries();
+        if (countriesResponse) setCountries(countriesResponse.data);
+      }
+      setLoaded(true);
     };
     fetchData();
   });

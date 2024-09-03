@@ -7,6 +7,7 @@ import { PaginationTourResponse } from '../../types/TourType';
 import { fetchData as fetchTours } from '../../utils/fetchToursData';
 import Slider from 'react-slick';
 import TourCard from '../../components/TourCard';
+import Footer from '../../components/Footer';
 
 export default function DestinationDetails() {
   const [data, setData] = useState<Country | null>(null);
@@ -211,6 +212,7 @@ export default function DestinationDetails() {
               </div>
             )}
         </main>
+        <Footer/>
       </>
     )
   );
